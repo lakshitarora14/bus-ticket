@@ -13,11 +13,11 @@ const ticketSchema = new mongoose.Schema({
         trim: true,
         min: 1,
         max: 40,
-        unique:true
+        unique: true
     },
     isBooked: {
         type: Boolean,
-        default:true
+        default: true
     },
     bookedBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +27,7 @@ const ticketSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        max:100
+        max: 100
     },
     gender: {
         type: String,

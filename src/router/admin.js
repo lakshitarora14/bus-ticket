@@ -1,7 +1,7 @@
 const express = require('express')
-const Admin = require('../src/models/admin')
-const Ticket = require('../src/models/ticket')
-const auth = require('../src/middleware/auth')
+const Admin = require('../models/admin')
+const Ticket = require('../models/ticket')
+const auth = require('../middleware/auth')
 const router = new express.Router()
 
 
@@ -29,14 +29,13 @@ router.post('/admin/login', async (req, res) => {
     }
 })
 
-router.post('/admin/logout', auth.authAdmin, async (req,res) =>{
-    try{
+router.post('/admin/logout', auth.authAdmin, async (req, res) => {
+    try {
         req.admin.token = ""
         await req.admin.save()
-        res.status(200).send({success:'Logged Out Successfully'})
+        res.status(200).send({ success: 'Logged Out Successfully' })
     }
-    catch(error)
-    {
+    catch (error) {
         res.status(500).send()
     }
 })
@@ -59,11 +58,11 @@ router.get('/admin/tickets/:status', auth.authAdmin, async (req, res) => {
     const status = req.params.status
     try {
         if (status === 'open') {
-            const tickets = await Ticket.find({isBooked:false})
+            const tickets = await Ticket.find({ isBooked: false })
             res.send(tickets)
         }
         else if (status === 'close') {
-            const tickets = await Ticket.find({isBooked:true})
+            const tickets = await Ticket.find({ isBooked: true })
             res.send(tickets)
         }
 
@@ -75,8 +74,8 @@ router.get('/admin/tickets/:status', auth.authAdmin, async (req, res) => {
 router.get('/admin/tickets', auth.authAdmin, async (req, res) => {
     const status = req.params.status
     try {
-           const tickets = await Ticket.find({})
-            res.send(tickets)
+        const tickets = await Ticket.find({})
+        res.send(tickets)
 
     } catch (error) {
         res.status(500).send()
