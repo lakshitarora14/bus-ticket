@@ -41,11 +41,20 @@ router.post('/user/logout', auth.authUser, async (req, res) => {
     }
 })
 
-router.post('/user/bookTicket', auth.authUser, async (req, res) => {
+router.post('/user/bookTicket', auth.authUser, async (req, res) => {  
+    const prevTicket = await Ticket.findOne({seatNumber : req.body.seatNumber})
+    console.log(prevTicket)
+    if(prevTicket.isBooked === true)
+    {
+        return res.send("Sorry this seat is already booked")
+    }
     const ticket = new Ticket(req.body)
     try {
         ticket.bookedBy = req.user._id
-        await ticket.save()
+        ticket.date = Date.now()
+        var upsertData = ticket.toObject();
+        delete upsertData._id;
+        await Ticket.findOneAndUpdate({seatNumber : req.body.seatNumber},upsertData,{upsert: true})
         res.status(201).send(ticket)
     }
     catch (error) {
@@ -111,10 +120,6 @@ router.patch('/user/editTicket/:id', auth.authUser, async (req, res) => {
     }
     try {
         const ticket = await Ticket.findById(req.params.id)
-        if (updates.includes('isBooked')) {
-            await Ticket.findByIdAndDelete(req.params.id)
-            return res.status(200).send({ done: 'booking cancelled' })
-        }
         updates.forEach((update) => ticket[update] = req.body[update])
         await ticket.save()
         if (!ticket) {

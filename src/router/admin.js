@@ -40,15 +40,14 @@ router.post('/admin/logout', auth.authAdmin, async (req, res) => {
     }
 })
 
-router.delete('/admin/deleteAll', async (req, res) => {
+router.patch('/admin/openAll', async (req, res) => {
     try {
-        const deleteMany = await Ticket.deleteMany({}, (err) => {
+        const openAll = await Ticket.updateMany({isBooked : false}, (err) => {
             if (err) {
-                throw new Error('Delete All Failed')
+                throw new Error('Open All failed')
             }
         })
-        res.send(deleteMany)
-
+        res.send(openAll)
     } catch (error) {
         res.status(400).send(error)
     }

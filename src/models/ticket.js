@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const ticketSchema = new mongoose.Schema({
     PassengerName: {
         type: String,
-        required: true,
         trim: true,
 
     },
@@ -25,18 +24,15 @@ const ticketSchema = new mongoose.Schema({
     },
     age: {
         type: String,
-        required: true,
         trim: true,
         max: 100
     },
     gender: {
         type: String,
-        required: true,
         trim: true
     },
     phone: {
         type: String,
-        required: true,
         trim: true,
     },
     date: {
