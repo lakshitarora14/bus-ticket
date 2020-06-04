@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
-// mongoose.connect(process.env.MONGODB_URL, {
-mongoose.connect('mongodb+srv://bus-ticket:bus-ticket@cluster0-pn3oi.mongodb.net/bus-ticket', {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true

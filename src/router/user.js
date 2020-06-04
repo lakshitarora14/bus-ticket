@@ -43,7 +43,7 @@ router.post('/user/logout', auth.authUser, async (req, res) => {
 
 router.post('/user/bookTicket', auth.authUser, async (req, res) => {  
     const prevTicket = await Ticket.findOne({seatNumber : req.body.seatNumber})
-    console.log(prevTicket)
+    const pnrNumber = prevTicket._doc._id
     if(prevTicket.isBooked === true)
     {
         return res.send("Sorry this seat is already booked")
@@ -55,7 +55,7 @@ router.post('/user/bookTicket', auth.authUser, async (req, res) => {
         var upsertData = ticket.toObject();
         delete upsertData._id;
         await Ticket.findOneAndUpdate({seatNumber : req.body.seatNumber},upsertData,{upsert: true})
-        res.status(201).send(ticket)
+        res.status(201).send({ticket,"pnrNumber":pnrNumber})
     }
     catch (error) {
         res.status(400).send(error.message)
