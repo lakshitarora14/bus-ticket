@@ -8,19 +8,19 @@ Admin section:
 
 
 
-Signing Up new Admin
+1) Signing Up new Admin
 
-Login for admin 
+2) Login for admin 
 
-Logout for admin
+3) Logout for admin
 
-Show all tickets
+4) Show all tickets
 
-Status for a particlar ticket
+5) Status for a particlar ticket
 
-All closed/open tickets
+6) All closed/open tickets
 
-Open all the tickets
+7) Open all the tickets
 
 
 
@@ -28,25 +28,25 @@ User Section:
 
 
 
-Book new Ticket
+1) Book new Ticket
 
-Signing Up new User
+2) Signing Up new User
 
-Login for user 
+3) Login for user 
 
-Logout for user
+4) Logout for user
 
-Show user Profile
+5) Show user Profile
 
-Show ticket status by PNR number
+6) Show ticket status by PNR number
 
-View All currently open ticket seat numbers
+7) View All currently open ticket seat numbers
 
-View all booked tickets seat numbers
+8) View all booked tickets seat numbers
 
-User view all tickets
+9) User view all tickets
 
-Edit ticket details
+10) Edit ticket details
 
 
 
