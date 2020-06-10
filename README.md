@@ -1,5 +1,5 @@
 # bus-ticket
-Bus Ticket Booking system with admin section and user section. A node js server is set up on EC2 to handle ticketing for a bus company.
+Bus Ticket Booking system in node.js with admin section and user section. A node js server is set up on EC2 to handle ticketing for a bus company.
 
 Features of this system:
 
