@@ -3,7 +3,10 @@ Bus Ticket Booking system with admin section and user section. A node js server 
 
 Features of this system:
 
+
 Admin section:
+
+
 
 Signing Up new Admin
 
@@ -19,7 +22,11 @@ All closed/open tickets
 
 Open all the tickets
 
+
+
 User Section:
+
+
 
 Book new Ticket
 
